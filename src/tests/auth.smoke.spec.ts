@@ -1,14 +1,12 @@
-import { test, expect } from '@playwright/test';
+import { test } from "@playwright/test";
+import { LoginPage } from "../pages/LoginPage";
+import { DashboardPage } from "../pages/DashboardPage";
 
-test('@smoke OrangeHRM login -> dashboard', async ({ page }) => {
-  await page.goto('/web/index.php/auth/login');
+test("@smoke OrangeHRM login -> dashboard", async ({ page }) => {
+  const login = new LoginPage(page);
+  const dashboard = new DashboardPage(page);
 
-  await expect(page.locator('button[type="submit"]')).toBeVisible();
-
-  await page.locator('input[name="username"]').fill('Admin');
-  await page.locator('input[name="password"]').fill('admin123');
-  await page.locator('button[type="submit"]').click();
-
-  await expect(page).toHaveURL(/\/dashboard\/index/i);
-  await expect(page.locator('h6:has-text("Dashboard")')).toBeVisible();
+  await login.goto();
+  await login.login("Admin", "admin123");
+  await dashboard.assertLoaded();
 });
