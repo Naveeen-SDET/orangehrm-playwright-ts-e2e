@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { "test": "playwright test",
-  "test:smoke": "playwright test --grep @smoke",
-  "report": "playwright show-report"},
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "report": "playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,5 +16,8 @@
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
   }
 }
