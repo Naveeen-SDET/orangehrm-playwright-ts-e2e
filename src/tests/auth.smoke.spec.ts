@@ -8,6 +8,7 @@ test("@smoke OrangeHRM login -> dashboard", async ({ page }) => {
   const dashboard = new DashboardPage(page);
 
   await login.goto();
+  console.log("DEBUG ENV:", env.username, env.password);
   await login.login(env.username, env.password);
   await dashboard.assertLoaded();
 });
